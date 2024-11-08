@@ -11,7 +11,7 @@ class LoginForm extends StatelessWidget {
     return Column(
       children: [
         const SizedBox(
-          height: 12,
+          height: 40,
         ),
         TextField(
           decoration: InputDecoration(
@@ -33,7 +33,7 @@ class LoginForm extends StatelessWidget {
           ),
         ),
         const SizedBox(
-          height: 12,
+          height: 24,
         ),
         TextField(
           decoration: InputDecoration(
@@ -57,7 +57,7 @@ class LoginForm extends StatelessWidget {
           ),
         ),
         const SizedBox(
-          height: 30,
+          height: 40,
         ),
         PrimaryButton(
           title: "LOGIN",
