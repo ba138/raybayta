@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:raybayta/Configs/colors.dart';
+import 'package:slide_to_act/slide_to_act.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -37,13 +38,13 @@ class SplashScreen extends StatelessWidget {
                   "Poppins",
                   textStyle: TextStyle(
                     fontSize: 24,
-                    color: AppColors.darkOnBackgroundColor,
+                    color: AppColors.darkPrimaryColor,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
               const SizedBox(
-                height: 24,
+                height: 80,
               ),
               const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -81,9 +82,9 @@ class SplashScreen extends StatelessWidget {
                 "Connected",
                 style: GoogleFonts.getFont(
                   "Poppins",
-                  textStyle: const TextStyle(
+                  textStyle: TextStyle(
                     fontSize: 24,
-                    color: Colors.amberAccent,
+                    color: AppColors.darkPrimaryColor,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
@@ -102,6 +103,25 @@ class SplashScreen extends StatelessWidget {
                     fontWeight: FontWeight.w400,
                   ),
                 ),
+              ),
+              const Spacer(),
+              SlideAction(
+                onSubmit: () {},
+                sliderButtonIcon: const Icon(Icons.arrow_forward),
+                innerColor: AppColors.darkPrimaryColor,
+                outerColor: AppColors.darkContainerColor,
+                text: "Slide to start now",
+                textStyle: GoogleFonts.getFont(
+                  "Poppins",
+                  textStyle: TextStyle(
+                    fontSize: 18,
+                    color: AppColors.darkOnBackgroundColor,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 20,
               ),
             ],
           ),
