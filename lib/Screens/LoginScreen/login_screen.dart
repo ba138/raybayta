@@ -10,7 +10,7 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
           child: Padding(
-        padding: const EdgeInsets.all(10.0),
+        padding: const EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -42,6 +42,57 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
             ),
+            const SizedBox(
+              height: 20,
+            ),
+            Container(
+              height: 400,
+              decoration: BoxDecoration(
+                color: AppColors.darkContainerColor,
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(
+                    20,
+                  ),
+                ),
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                      child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Column(
+                            children: [
+                              Text(
+                                "Login",
+                                style: GoogleFonts.getFont(
+                                  "Poppins",
+                                  textStyle: TextStyle(
+                                    fontSize: 16,
+                                    color: AppColors.darkOnContainerColor,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                              ),
+                              AnimatedContainer(
+                                duration: const Duration(seconds: 1),
+                                height: 10,
+                                width: 150,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(100),
+                                  color: AppColors.darkPrimaryColor,
+                                ),
+                              )
+                            ],
+                          ),
+                        ],
+                      )
+                    ],
+                  ))
+                ],
+              ),
+            )
           ],
         ),
       )),
