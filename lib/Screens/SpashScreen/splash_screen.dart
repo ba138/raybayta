@@ -62,7 +62,47 @@ class SplashScreen extends StatelessWidget {
                         "https://static.vecteezy.com/system/resources/thumbnails/004/899/833/small_2x/beautiful-girl-with-blue-hair-avatar-of-woman-for-social-network-vector.jpg"),
                   ),
                 ],
-              )
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              Text(
+                "Now You Are",
+                style: GoogleFonts.getFont(
+                  "Poppins",
+                  textStyle: TextStyle(
+                    fontSize: 24,
+                    color: AppColors.darkOnBackgroundColor,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              ),
+              Text(
+                "Connected",
+                style: GoogleFonts.getFont(
+                  "Poppins",
+                  textStyle: const TextStyle(
+                    fontSize: 24,
+                    color: Colors.amberAccent,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 24,
+              ),
+              Text(
+                "Perfect solution of connecting with anyone\n easy and more secure",
+                textAlign: TextAlign.center,
+                style: GoogleFonts.getFont(
+                  "Poppins",
+                  textStyle: TextStyle(
+                    fontSize: 14,
+                    color: AppColors.darkOnBackgroundColor,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              ),
             ],
           ),
         ),
