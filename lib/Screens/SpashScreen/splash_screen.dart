@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:raybayta/Configs/colors.dart';
 import 'package:slide_to_act/slide_to_act.dart';
@@ -106,7 +107,9 @@ class SplashScreen extends StatelessWidget {
               ),
               const Spacer(),
               SlideAction(
-                onSubmit: () {},
+                onSubmit: () {
+                  Get.offAllNamed("/loginView");
+                },
                 sliderButtonIcon: const Icon(Icons.arrow_forward),
                 innerColor: AppColors.darkPrimaryColor,
                 outerColor: AppColors.darkContainerColor,

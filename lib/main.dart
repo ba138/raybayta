@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:raybayta/Configs/screen_paths.dart';
 import 'package:raybayta/Configs/themes.dart';
 import 'package:raybayta/Screens/SpashScreen/splash_screen.dart';
 
@@ -11,9 +13,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Raybayta',
+      getPages: screenPaths,
       theme: lightTheme,
       darkTheme: darkTheme,
       themeMode: ThemeMode.dark,
