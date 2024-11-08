@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:raybayta/Configs/colors.dart';
 
@@ -7,6 +8,7 @@ class LoginTabbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    RxBool isLogin = false.obs;
     return Container(
       height: 400,
       decoration: BoxDecoration(
@@ -25,65 +27,77 @@ class LoginTabbar extends StatelessWidget {
           Expanded(
               child: Column(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Column(
-                    children: [
-                      Text(
-                        "Login",
-                        style: GoogleFonts.getFont(
-                          "Poppins",
-                          textStyle: TextStyle(
-                            fontSize: 16,
-                            color: AppColors.darkOnContainerColor,
-                            fontWeight: FontWeight.w400,
+              Obx(
+                () => Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        isLogin.value = true;
+                      },
+                      child: Column(
+                        children: [
+                          Text(
+                            "Login",
+                            style: GoogleFonts.getFont(
+                              "Poppins",
+                              textStyle: TextStyle(
+                                fontSize: isLogin.value ? 14 : 12,
+                                color: AppColors.darkOnContainerColor,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 5,
-                      ),
-                      AnimatedContainer(
-                        duration: const Duration(seconds: 1),
-                        height: 3,
-                        width: 100,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(100),
-                          color: AppColors.darkPrimaryColor,
-                        ),
-                      )
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        "Signup",
-                        style: GoogleFonts.getFont(
-                          "Poppins",
-                          textStyle: TextStyle(
-                            fontSize: 16,
-                            color: AppColors.darkOnContainerColor,
-                            fontWeight: FontWeight.w400,
+                          const SizedBox(
+                            height: 5,
                           ),
-                        ),
+                          AnimatedContainer(
+                            duration: const Duration(seconds: 1),
+                            height: 3,
+                            width: isLogin.value ? 100 : 0,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(100),
+                              color: AppColors.darkPrimaryColor,
+                            ),
+                          )
+                        ],
                       ),
-                      const SizedBox(
-                        height: 5,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        isLogin.value = false;
+                      },
+                      child: Column(
+                        children: [
+                          Text(
+                            "Signup",
+                            style: GoogleFonts.getFont(
+                              "Poppins",
+                              textStyle: TextStyle(
+                                fontSize: isLogin.value ? 14 : 12,
+                                color: AppColors.darkOnContainerColor,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          AnimatedContainer(
+                            duration: const Duration(seconds: 1),
+                            height: 3,
+                            width: isLogin.value ? 0 : 100,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(100),
+                              color: AppColors.darkPrimaryColor,
+                            ),
+                          )
+                        ],
                       ),
-                      AnimatedContainer(
-                        duration: const Duration(seconds: 1),
-                        height: 3,
-                        width: 100,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(100),
-                          color: AppColors.darkPrimaryColor,
-                        ),
-                      )
-                    ],
-                  ),
-                ],
-              )
+                    ),
+                  ],
+                ),
+              ),
             ],
           ))
         ],
