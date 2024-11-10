@@ -10,7 +10,7 @@ class LoginTabbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    RxBool isLogin = false.obs;
+    RxBool isLogin = true.obs;
     return Container(
       // height: 400,
       decoration: BoxDecoration(

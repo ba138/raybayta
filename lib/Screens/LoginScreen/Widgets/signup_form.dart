@@ -82,7 +82,7 @@ class SignupForm extends StatelessWidget {
           height: 40,
         ),
         PrimaryButton(
-          title: "LOGIN",
+          title: "SIGNUP",
           ontap: () {},
         ),
       ],

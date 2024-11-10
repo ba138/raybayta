@@ -12,42 +12,44 @@ class LoginScreen extends StatelessWidget {
       body: SafeArea(
           child: Padding(
         padding: const EdgeInsets.all(20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const SizedBox(
-              height: 40,
-            ),
-            Text(
-              "Logo",
-              style: GoogleFonts.getFont(
-                "Poppins",
-                textStyle: TextStyle(
-                  fontSize: 30,
-                  color: AppColors.darkOnBackgroundColor,
-                  fontWeight: FontWeight.bold,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const SizedBox(
+                height: 40,
+              ),
+              Text(
+                "Logo",
+                style: GoogleFonts.getFont(
+                  "Poppins",
+                  textStyle: TextStyle(
+                    fontSize: 30,
+                    color: AppColors.darkOnBackgroundColor,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 12,
-            ),
-            Text(
-              "Raybayta",
-              style: GoogleFonts.getFont(
-                "Poppins",
-                textStyle: TextStyle(
-                  fontSize: 24,
-                  color: AppColors.darkPrimaryColor,
-                  fontWeight: FontWeight.bold,
+              const SizedBox(
+                height: 12,
+              ),
+              Text(
+                "Raybayta",
+                style: GoogleFonts.getFont(
+                  "Poppins",
+                  textStyle: TextStyle(
+                    fontSize: 24,
+                    color: AppColors.darkPrimaryColor,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 60,
-            ),
-            const LoginTabbar(),
-          ],
+              const SizedBox(
+                height: 60,
+              ),
+              const LoginTabbar(),
+            ],
+          ),
         ),
       )),
     );

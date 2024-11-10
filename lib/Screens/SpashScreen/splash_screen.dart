@@ -109,6 +109,7 @@ class SplashScreen extends StatelessWidget {
               SlideAction(
                 onSubmit: () {
                   Get.offAllNamed("/loginView");
+                  return null;
                 },
                 sliderButtonIcon: const Icon(Icons.arrow_forward),
                 innerColor: AppColors.darkPrimaryColor,
