@@ -10,16 +10,34 @@ class ChatList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      children: const [
-        ContactChatTile(),
-        ContactChatTile(),
-        ContactChatTile(),
-        ContactChatTile(),
-        ContactChatTile(),
-        ContactChatTile(),
-        ContactChatTile(),
-        ContactChatTile(),
-        ContactChatTile(),
+      children: [
+        ContactChatTile(
+          ontap: () {},
+        ),
+        ContactChatTile(
+          ontap: () {},
+        ),
+        ContactChatTile(
+          ontap: () {},
+        ),
+        ContactChatTile(
+          ontap: () {},
+        ),
+        ContactChatTile(
+          ontap: () {},
+        ),
+        ContactChatTile(
+          ontap: () {},
+        ),
+        ContactChatTile(
+          ontap: () {},
+        ),
+        ContactChatTile(
+          ontap: () {},
+        ),
+        ContactChatTile(
+          ontap: () {},
+        ),
       ],
     );
   }
