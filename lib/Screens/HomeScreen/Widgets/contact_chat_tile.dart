@@ -8,6 +8,9 @@ class ContactChatTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: const EdgeInsets.only(
+        bottom: 10,
+      ),
       padding: const EdgeInsets.all(
         10,
       ),
@@ -24,7 +27,7 @@ class ContactChatTile extends StatelessWidget {
           Row(
             children: [
               CircleAvatar(
-                radius: 30,
+                radius: 24,
                 backgroundColor: AppColors.darkPrimaryColor,
               ),
               const SizedBox(
