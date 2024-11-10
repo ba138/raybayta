@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:raybayta/Configs/colors.dart';
 import 'package:raybayta/Widgets/primary_button.dart';
@@ -98,7 +99,9 @@ class SignupForm extends StatelessWidget {
         ),
         PrimaryButton(
           title: "SIGNUP",
-          ontap: () {},
+          ontap: () {
+            Get.offNamedUntil("/homeView", (route) => route.isFirst);
+          },
         ),
       ],
     );

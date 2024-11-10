@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:raybayta/Configs/colors.dart';
 import 'package:raybayta/Widgets/primary_button.dart';
@@ -71,7 +72,9 @@ class LoginForm extends StatelessWidget {
         ),
         PrimaryButton(
           title: "LOGIN",
-          ontap: () {},
+          ontap: () {
+            Get.offNamedUntil("/homeView", (route) => route.isFirst);
+          },
         ),
       ],
     );

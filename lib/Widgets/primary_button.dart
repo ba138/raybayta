@@ -16,31 +16,7 @@ class PrimaryButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        Container(
-          height: 56,
-          width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
-            color: AppColors.darkPrimaryColor,
-            borderRadius: BorderRadius.circular(
-              10,
-            ),
-          ),
-          child: Center(
-            child: Text(
-              "LOGIN",
-              style: GoogleFonts.getFont(
-                "Poppins",
-                textStyle: TextStyle(
-                  fontSize: 14,
-                  color: AppColors.darkOnBackgroundColor,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ),
-          ),
-        );
-      },
+      onTap: ontap,
       child: Container(
         height: 56,
         width: MediaQuery.of(context).size.width,
@@ -52,7 +28,7 @@ class PrimaryButton extends StatelessWidget {
         ),
         child: Center(
           child: Text(
-            title,
+            "LOGIN",
             style: GoogleFonts.getFont(
               "Poppins",
               textStyle: TextStyle(
