@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:raybayta/Configs/colors.dart';
-import 'package:raybayta/Screens/LoginScreen/Widgets/login_form.dart';
-import 'package:raybayta/Screens/LoginScreen/Widgets/signup_form.dart';
+import 'package:raybayta/Screens/Auth/Widgets/login_form.dart';
+import 'package:raybayta/Screens/Auth/Widgets/signup_form.dart';
 
 class LoginTabbar extends StatelessWidget {
   const LoginTabbar({super.key});

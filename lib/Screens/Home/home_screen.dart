@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:raybayta/Configs/colors.dart';
-import 'package:raybayta/Screens/HomeScreen/Widgets/chat_list.dart';
-import 'package:raybayta/Screens/HomeScreen/Widgets/home_tabbar.dart';
+import 'package:raybayta/Screens/Home/Widgets/chat_list.dart';
+import 'package:raybayta/Screens/Home/Widgets/home_tabbar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

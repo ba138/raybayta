@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:raybayta/Configs/screen_paths.dart';
 import 'package:raybayta/Configs/themes.dart';
-import 'package:raybayta/Screens/SpashScreen/splash_screen.dart';
+import 'package:raybayta/Screens/SplashScreen/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
