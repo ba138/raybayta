@@ -20,7 +20,12 @@ class LoginForm extends StatelessWidget {
             fillColor: AppColors.darkBackgroundColor,
             prefixIcon: const Icon(Icons.alternate_email_outlined),
             filled: true,
-            border: InputBorder.none,
+            border: UnderlineInputBorder(
+              borderSide: BorderSide.none,
+              borderRadius: BorderRadius.circular(
+                10,
+              ),
+            ),
             hintText: 'Email',
             hintStyle: GoogleFonts.getFont(
               "Poppins",
@@ -44,7 +49,12 @@ class LoginForm extends StatelessWidget {
               Icons.password_outlined,
             ),
             filled: true,
-            border: InputBorder.none,
+            border: UnderlineInputBorder(
+              borderSide: BorderSide.none,
+              borderRadius: BorderRadius.circular(
+                10,
+              ),
+            ),
             hintText: 'Password',
             hintStyle: GoogleFonts.getFont(
               "Poppins",

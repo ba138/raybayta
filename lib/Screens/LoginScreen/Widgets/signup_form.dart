@@ -20,7 +20,12 @@ class SignupForm extends StatelessWidget {
             fillColor: AppColors.darkBackgroundColor,
             prefixIcon: const Icon(Icons.person_2_outlined),
             filled: true,
-            border: InputBorder.none,
+            border: UnderlineInputBorder(
+              borderSide: BorderSide.none,
+              borderRadius: BorderRadius.circular(
+                10,
+              ),
+            ),
             hintText: 'Full Name',
             hintStyle: GoogleFonts.getFont(
               "Poppins",
@@ -42,7 +47,12 @@ class SignupForm extends StatelessWidget {
             fillColor: AppColors.darkBackgroundColor,
             prefixIcon: const Icon(Icons.alternate_email_outlined),
             filled: true,
-            border: InputBorder.none,
+            border: UnderlineInputBorder(
+              borderSide: BorderSide.none,
+              borderRadius: BorderRadius.circular(
+                10,
+              ),
+            ),
             hintText: 'Email',
             hintStyle: GoogleFonts.getFont(
               "Poppins",
@@ -66,7 +76,12 @@ class SignupForm extends StatelessWidget {
               Icons.password_outlined,
             ),
             filled: true,
-            border: InputBorder.none,
+            border: UnderlineInputBorder(
+              borderSide: BorderSide.none,
+              borderRadius: BorderRadius.circular(
+                10,
+              ),
+            ),
             hintText: 'Password',
             hintStyle: GoogleFonts.getFont(
               "Poppins",
