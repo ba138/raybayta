@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:get/get.dart';
 import 'package:raybayta/Screens/Home/Widgets/contact_chat_tile.dart';
-
-import '../../../Configs/colors.dart';
 
 class ChatList extends StatelessWidget {
   const ChatList({super.key});
@@ -12,7 +10,9 @@ class ChatList extends StatelessWidget {
     return ListView(
       children: [
         ContactChatTile(
-          ontap: () {},
+          ontap: () {
+            Get.toNamed("/chatView");
+          },
         ),
         ContactChatTile(
           ontap: () {},
