@@ -10,6 +10,9 @@ var darkTheme = ThemeData(
       fillColor: AppColors.darkBackgroundColor,
       border: InputBorder.none,
     ),
+    appBarTheme: AppBarTheme(
+      backgroundColor: AppColors.darkContainerColor,
+    ),
     colorScheme: ColorScheme.dark(
       primary: AppColors.darkPrimaryColor,
       onPrimary: AppColors.darkOnBackgroundColor,
