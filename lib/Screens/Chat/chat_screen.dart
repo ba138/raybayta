@@ -99,7 +99,17 @@ class ChatScreen extends StatelessWidget {
             Expanded(
               child: TextField(
                 decoration: InputDecoration(
-                    filled: false, hintText: "Type message ..."),
+                  filled: false,
+                  hintText: "Type message ...",
+                  hintStyle: GoogleFonts.getFont(
+                    "Poppins",
+                    textStyle: TextStyle(
+                      fontSize: 14,
+                      color: AppColors.darkOnBackgroundColor,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                ),
               ),
             ),
             const SizedBox(
