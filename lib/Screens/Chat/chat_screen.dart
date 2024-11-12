@@ -138,7 +138,7 @@ class ChatScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: ListView(
-          children: [
+          children: const [
             ChatBubble(
               message: "Hello how are you",
               isComing: true,
