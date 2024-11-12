@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:raybayta/Configs/colors.dart';
+import 'package:raybayta/Screens/Chat/Widgtes/chat_bubble.dart';
 
 class ChatScreen extends StatelessWidget {
   const ChatScreen({super.key});
@@ -69,40 +70,105 @@ class ChatScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: Container(
+        margin: const EdgeInsets.only(
+          left: 10,
+          right: 10,
+        ),
+        height: 56,
+        padding: const EdgeInsets.symmetric(
+          vertical: 5,
+          horizontal: 15,
+        ),
+        decoration: BoxDecoration(
+            color: AppColors.darkContainerColor,
+            borderRadius: BorderRadius.circular(30)),
+        child: Row(
           children: [
-            Container(
-              padding: const EdgeInsets.all(10),
-              constraints: BoxConstraints(
-                  minWidth: 100,
-                  maxWidth: MediaQuery.sizeOf(context).width / 1.3),
-              decoration: BoxDecoration(
-                color: AppColors.darkContainerColor,
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(
-                    10,
-                  ),
-                  topRight: Radius.circular(
-                    10,
-                  ),
-                  bottomLeft: Radius.circular(
-                    0,
-                  ),
-                  bottomRight: Radius.circular(
-                    10,
+            InkWell(
+              onTap: () {},
+              child: const Icon(
+                Icons.mic,
+                size: 20,
+              ),
+            ),
+            const SizedBox(
+              width: 8,
+            ),
+            Expanded(
+              child: TextField(
+                decoration: InputDecoration(
+                  filled: false,
+                  hintText: "Type message ...",
+                  hintStyle: GoogleFonts.getFont(
+                    "Poppins",
+                    textStyle: TextStyle(
+                      fontSize: 14,
+                      color: AppColors.darkOnBackgroundColor,
+                      fontWeight: FontWeight.w400,
+                    ),
                   ),
                 ),
               ),
-              child: const Row(
-                children: [
-                  Flexible(
-                      child: Text(
-                          "yfger iurgwe usgdafdsan sdbfjhref jusdgfsd usadgfgds "))
-                ],
+            ),
+            const SizedBox(
+              width: 8,
+            ),
+            InkWell(
+              onTap: () {},
+              child: const Icon(
+                Icons.image,
+                size: 20,
+              ),
+            ),
+            const SizedBox(
+              width: 8,
+            ),
+            InkWell(
+              onTap: () {},
+              child: const Icon(
+                Icons.send,
+                size: 20,
               ),
             )
+          ],
+        ),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: ListView(
+          children: const [
+            ChatBubble(
+              message: "Hello how are you",
+              isComing: true,
+              staus: "read",
+              time: "10:10 AM",
+              image: "",
+            ),
+            ChatBubble(
+              message: "Hello how are you",
+              isComing: false,
+              staus: "read",
+              time: "10:10 AM",
+              image:
+                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJzpEkv-vlwrVppb-PQuWArI1sXR9vAYAwNg&s",
+            ),
+            ChatBubble(
+              message: "I am good what about you",
+              isComing: false,
+              staus: "read",
+              time: "10:10 AM",
+              image: "",
+            ),
+            ChatBubble(
+              message: "Hello how are you?",
+              isComing: true,
+              staus: "read",
+              time: "10:10 AM",
+              image:
+                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJzpEkv-vlwrVppb-PQuWArI1sXR9vAYAwNg&s",
+            ),
           ],
         ),
       ),
