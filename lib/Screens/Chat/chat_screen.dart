@@ -70,9 +70,64 @@ class ChatScreen extends StatelessWidget {
           ),
         ],
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: Container(
+        margin: const EdgeInsets.only(
+          left: 10,
+          right: 10,
+        ),
+        height: 56,
+        padding: const EdgeInsets.symmetric(
+          vertical: 5,
+          horizontal: 15,
+        ),
+        decoration: BoxDecoration(
+            color: AppColors.darkContainerColor,
+            borderRadius: BorderRadius.circular(30)),
+        child: Row(
+          children: [
+            InkWell(
+              onTap: () {},
+              child: const Icon(
+                Icons.mic,
+                size: 20,
+              ),
+            ),
+            const SizedBox(
+              width: 8,
+            ),
+            Expanded(
+              child: TextField(
+                decoration: InputDecoration(
+                    filled: false, hintText: "Type message ..."),
+              ),
+            ),
+            const SizedBox(
+              width: 8,
+            ),
+            InkWell(
+              onTap: () {},
+              child: const Icon(
+                Icons.image,
+                size: 20,
+              ),
+            ),
+            const SizedBox(
+              width: 8,
+            ),
+            InkWell(
+              onTap: () {},
+              child: const Icon(
+                Icons.send,
+                size: 20,
+              ),
+            )
+          ],
+        ),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
+        child: ListView(
           children: [
             ChatBubble(
               message: "Hello how are you",
@@ -84,6 +139,21 @@ class ChatScreen extends StatelessWidget {
             ChatBubble(
               message: "Hello how are you",
               isComing: false,
+              staus: "read",
+              time: "10:10 AM",
+              image:
+                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJzpEkv-vlwrVppb-PQuWArI1sXR9vAYAwNg&s",
+            ),
+            ChatBubble(
+              message: "I am good what about you",
+              isComing: false,
+              staus: "read",
+              time: "10:10 AM",
+              image: "",
+            ),
+            ChatBubble(
+              message: "Hello how are you?",
+              isComing: true,
               staus: "read",
               time: "10:10 AM",
               image:

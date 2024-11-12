@@ -32,20 +32,35 @@ class ChatBubble extends StatelessWidget {
               ),
               decoration: BoxDecoration(
                 color: AppColors.darkContainerColor,
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(
-                    10,
-                  ),
-                  topRight: Radius.circular(
-                    10,
-                  ),
-                  bottomLeft: Radius.circular(
-                    0,
-                  ),
-                  bottomRight: Radius.circular(
-                    10,
-                  ),
-                ),
+                borderRadius: isComing
+                    ? const BorderRadius.only(
+                        topLeft: Radius.circular(
+                          10,
+                        ),
+                        topRight: Radius.circular(
+                          10,
+                        ),
+                        bottomLeft: Radius.circular(
+                          0,
+                        ),
+                        bottomRight: Radius.circular(
+                          10,
+                        ),
+                      )
+                    : const BorderRadius.only(
+                        topLeft: Radius.circular(
+                          10,
+                        ),
+                        topRight: Radius.circular(
+                          10,
+                        ),
+                        bottomLeft: Radius.circular(
+                          10,
+                        ),
+                        bottomRight: Radius.circular(
+                          0,
+                        ),
+                      ),
               ),
               child: image == ""
                   ? Text(
@@ -62,8 +77,11 @@ class ChatBubble extends StatelessWidget {
                   : Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Image.network(
-                          image,
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: Image.network(
+                            image,
+                          ),
                         ),
                         Text(
                           message,
