@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "930725419174",
+    "project_id": "raybayta-e0233",
+    "storage_bucket": "raybayta-e0233.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:930725419174:android:65e818c6fbdd8456307c67",
+        "android_client_info": {
+          "package_name": "com.basit.raybayta"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXbys8dnymBmF8Wv13TJ4RXQfwftikLKs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
