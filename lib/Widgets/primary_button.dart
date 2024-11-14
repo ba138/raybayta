@@ -28,7 +28,7 @@ class PrimaryButton extends StatelessWidget {
         ),
         child: Center(
           child: Text(
-            "LOGIN",
+            title,
             style: GoogleFonts.getFont(
               "Poppins",
               textStyle: TextStyle(

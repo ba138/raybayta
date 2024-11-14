@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:raybayta/Configs/colors.dart';
+import 'package:raybayta/Controllers/auth_controller.dart';
 import 'package:raybayta/Widgets/primary_button.dart';
 
 class LoginForm extends StatelessWidget {
@@ -9,12 +10,16 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var emailController = TextEditingController();
+    var passwordController = TextEditingController();
+    AuthController authController = Get.put(AuthController());
     return Column(
       children: [
         const SizedBox(
           height: 40,
         ),
         TextField(
+          controller: emailController,
           decoration: InputDecoration(
             isDense: true,
             contentPadding: const EdgeInsets.all(12),
@@ -42,6 +47,7 @@ class LoginForm extends StatelessWidget {
           height: 24,
         ),
         TextField(
+          controller: passwordController,
           decoration: InputDecoration(
             isDense: true,
             contentPadding: const EdgeInsets.all(12),
@@ -70,11 +76,18 @@ class LoginForm extends StatelessWidget {
         const SizedBox(
           height: 40,
         ),
-        PrimaryButton(
-          title: "LOGIN",
-          ontap: () {
-            Get.offNamedUntil("/homeView", (route) => route.isFirst);
-          },
+        Obx(
+          () => authController.isLoading.value == true
+              ? const CircularProgressIndicator()
+              : PrimaryButton(
+                  title: "LOGIN",
+                  ontap: () {
+                    authController.login(
+                      emailController.text,
+                      passwordController.text,
+                    );
+                  },
+                ),
         ),
       ],
     );

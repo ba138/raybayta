@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:raybayta/Configs/colors.dart';
+import 'package:raybayta/Controllers/auth_controller.dart';
 import 'package:raybayta/Widgets/primary_button.dart';
 
 class SignupForm extends StatelessWidget {
@@ -9,12 +10,19 @@ class SignupForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var nameController = TextEditingController();
+    var emailController = TextEditingController();
+
+    var passwordController = TextEditingController();
+
+    AuthController authController = Get.put(AuthController());
     return Column(
       children: [
         const SizedBox(
           height: 40,
         ),
         TextField(
+          controller: nameController,
           decoration: InputDecoration(
             isDense: true,
             contentPadding: const EdgeInsets.all(12),
@@ -42,6 +50,7 @@ class SignupForm extends StatelessWidget {
           height: 24,
         ),
         TextField(
+          controller: emailController,
           decoration: InputDecoration(
             isDense: true,
             contentPadding: const EdgeInsets.all(12),
@@ -69,6 +78,7 @@ class SignupForm extends StatelessWidget {
           height: 24,
         ),
         TextField(
+          controller: passwordController,
           decoration: InputDecoration(
             isDense: true,
             contentPadding: const EdgeInsets.all(12),
@@ -97,11 +107,19 @@ class SignupForm extends StatelessWidget {
         const SizedBox(
           height: 40,
         ),
-        PrimaryButton(
-          title: "SIGNUP",
-          ontap: () {
-            Get.offNamedUntil("/homeView", (route) => route.isFirst);
-          },
+        Obx(
+          () => authController.isLoading.value == true
+              ? const CircularProgressIndicator()
+              : PrimaryButton(
+                  title: "SIGNUP",
+                  ontap: () {
+                    // Get.offNamedUntil("/homeView", (route) => route.isFirst);
+                    authController.createUser(
+                      emailController.text,
+                      passwordController.text,
+                    );
+                  },
+                ),
         ),
       ],
     );
