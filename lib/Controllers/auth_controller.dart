@@ -10,6 +10,7 @@ class AuthController extends GetxController {
     try {
       await auth.signInWithEmailAndPassword(email: email, password: password);
       isLoading.value = false;
+      Get.offNamedUntil("/homeView", (route) => route.isFirst);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         isLoading.value = false;
@@ -36,6 +37,8 @@ class AuthController extends GetxController {
         password: password,
       );
       isLoading.value = false;
+
+      print("account created");
     } on FirebaseAuthException catch (e) {
       if (e.code == "weak passowrd") {
         isLoading.value = false;

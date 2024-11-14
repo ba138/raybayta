@@ -86,7 +86,6 @@ class LoginForm extends StatelessWidget {
                       emailController.text,
                       passwordController.text,
                     );
-                    // Get.offNamedUntil("/homeView", (route) => route.isFirst);
                   },
                 ),
         ),
