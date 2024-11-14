@@ -17,4 +17,20 @@ class AuthController extends GetxController {
       debugPrint(e.toString());
     }
   }
+
+  Future<void> createUser(String email, String password) async {
+    try {
+      auth.createUserWithEmailAndPassword(email: email, password: password);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == "weak passowrd") {
+        Get.snackbar("Warning", "Weak Password");
+      } else if (e.code == "email-already-in-use") {
+        Get.snackbar("Error", "Email is already register");
+      }
+    } catch (e) {
+      debugPrint(
+        e.toString(),
+      );
+    }
+  }
 }
