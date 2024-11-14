@@ -3,16 +3,21 @@ import 'package:get/get.dart';
 
 class SplashController extends GetxController {
   final auth = FirebaseAuth.instance;
-  void onInt() async {
+  @override
+  void onInit() async {
     super.onInit();
-    await handleUser();
+    await seasionHandler();
   }
 
-  Future<void> handleUser() async {
+  Future<void> seasionHandler() async {
     Future.delayed(
       const Duration(seconds: 3),
       () {
-        Get.offAllNamed("/homeView");
+        if (auth.currentUser == null) {
+          Get.offAllNamed("/loginView");
+        } else {
+          Get.offAllNamed("/homeView");
+        }
       },
     );
   }

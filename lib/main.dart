@@ -1,11 +1,8 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:raybayta/Configs/screen_paths.dart';
 import 'package:raybayta/Configs/themes.dart';
-import 'package:raybayta/Screens/Home/home_screen.dart';
-import 'package:raybayta/Screens/SplashScreen/splash_screen.dart';
 import 'package:raybayta/Screens/SplashScreen/spleash.dart';
 
 void main() async {
@@ -19,7 +16,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var auth = FirebaseAuth.instance;
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Raybayta',

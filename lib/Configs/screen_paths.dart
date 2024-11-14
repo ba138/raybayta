@@ -2,7 +2,6 @@ import 'package:get/get.dart';
 import 'package:raybayta/Screens/Chat/chat_screen.dart';
 import 'package:raybayta/Screens/Home/home_screen.dart';
 import 'package:raybayta/Screens/Auth/login_screen.dart';
-import 'package:raybayta/Screens/SplashScreen/spleash.dart';
 import 'package:raybayta/Screens/profile/profile_screen.dart';
 
 var screenPaths = [

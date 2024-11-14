@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:raybayta/Controllers/splash_controller.dart';
 
 class Spleash extends StatefulWidget {
   const Spleash({super.key});
@@ -10,7 +12,10 @@ class Spleash extends StatefulWidget {
 class _SpleashState extends State<Spleash> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    SplashController splashController = Get.put(
+      SplashController(),
+    );
+    return const Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
