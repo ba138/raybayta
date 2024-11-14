@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:raybayta/Configs/colors.dart';
 import 'package:raybayta/Screens/Home/Widgets/chat_list.dart';
@@ -38,7 +39,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             icon: const Icon(Icons.search),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.toNamed("profileView");
+            },
             icon: const Icon(Icons.more_vert),
           ),
         ],
