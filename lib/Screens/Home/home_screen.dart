@@ -1,9 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:raybayta/Configs/colors.dart';
 import 'package:raybayta/Screens/Home/Widgets/chat_list.dart';
 import 'package:raybayta/Screens/Home/Widgets/home_tabbar.dart';
+import 'package:raybayta/Screens/profile/profile_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -40,7 +42,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           ),
           IconButton(
             onPressed: () {
-              Get.toNamed("profileView");
+              Get.toNamed(
+                "/proflieView",
+              );
             },
             icon: const Icon(Icons.more_vert),
           ),
