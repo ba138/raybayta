@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:raybayta/Models/userModel.dart';
 
 class AuthController extends GetxController {
   final auth = FirebaseAuth.instance;
@@ -70,14 +71,10 @@ class AuthController extends GetxController {
     try {
       User? currentUser = auth.currentUser;
       if (currentUser?.uid != null) {
-        final newUser = {
-          "email": email,
-          "name": name,
-          'id': auth.currentUser!.uid,
-          'phoneNumber': null,
-          'profileImage': null,
-        };
-        db.collection("Users").doc(auth.currentUser!.uid).set(newUser);
+        var newUser =
+            UserModel(id: auth.currentUser!.uid, email: email, name: name);
+
+        db.collection("Users").doc(auth.currentUser!.uid).set(newUser.toJson());
         Get.offNamedUntil("/homeView", (route) => route.isFirst);
       } else {
         debugPrint("current user is null");
