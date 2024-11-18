@@ -2,14 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:raybayta/Configs/colors.dart';
+import 'package:raybayta/Controllers/auth_controller.dart';
 
 import 'package:raybayta/Screens/profile/Widgets/userInfo_widget.dart';
+import 'package:raybayta/Widgets/primary_button.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    AuthController auth = Get.put(AuthController());
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -31,12 +35,21 @@ class ProfileScreen extends StatelessWidget {
               icon: const Icon(Icons.edit))
         ],
       ),
-      body: const SafeArea(
+      body: SafeArea(
           child: Padding(
-        padding: EdgeInsets.all(12.0),
+        padding: const EdgeInsets.all(12.0),
         child: Column(
           children: [
-            UserinfoWidget(),
+            const UserinfoWidget(),
+            const Spacer(),
+            PrimaryButton(
+                title: "Logout",
+                ontap: () {
+                  auth.logout();
+                }),
+            const SizedBox(
+              height: 40,
+            ),
           ],
         ),
       )),

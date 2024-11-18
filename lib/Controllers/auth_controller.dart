@@ -1,9 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:raybayta/Models/userModel.dart';
 
 class AuthController extends GetxController {
   final auth = FirebaseAuth.instance;
+  final db = FirebaseFirestore.instance;
   RxBool isLoading = false.obs;
   Future<void> login(String email, String password) async {
     isLoading.value = true;
@@ -28,7 +31,7 @@ class AuthController extends GetxController {
     }
   }
 
-  Future<void> createUser(String email, String password) async {
+  Future<void> createUser(String email, String password, String name) async {
     isLoading.value = true;
 
     try {
@@ -36,9 +39,10 @@ class AuthController extends GetxController {
         email: email,
         password: password,
       );
-      isLoading.value = false;
+      debugPrint("account created");
 
-      print("account created");
+      initUser(email, name);
+      isLoading.value = false;
     } on FirebaseAuthException catch (e) {
       if (e.code == "weak passowrd") {
         isLoading.value = false;
@@ -55,6 +59,28 @@ class AuthController extends GetxController {
       debugPrint(
         e.toString(),
       );
+    }
+  }
+
+  Future<void> logout() async {
+    await auth.signOut();
+    Get.offAllNamed("/loginView");
+  }
+
+  Future<void> initUser(String email, String name) async {
+    try {
+      User? currentUser = auth.currentUser;
+      if (currentUser?.uid != null) {
+        var newUser =
+            UserModel(id: auth.currentUser!.uid, email: email, name: name);
+
+        db.collection("Users").doc(auth.currentUser!.uid).set(newUser.toJson());
+        Get.offNamedUntil("/homeView", (route) => route.isFirst);
+      } else {
+        debugPrint("current user is null");
+      }
+    } catch (e) {
+      debugPrint("this is error in init User :$e");
     }
   }
 }
