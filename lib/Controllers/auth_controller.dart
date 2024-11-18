@@ -57,4 +57,9 @@ class AuthController extends GetxController {
       );
     }
   }
+
+  Future<void> logout() async {
+    await auth.signOut();
+    Get.offAllNamed("/loginView");
+  }
 }
