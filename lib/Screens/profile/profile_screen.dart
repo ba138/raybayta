@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:raybayta/Configs/colors.dart';
+import 'package:raybayta/Widgets/primary_button.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -57,48 +58,72 @@ class ProfileScreen extends StatelessWidget {
                         const SizedBox(
                           height: 20,
                         ),
-                        TextField(
-                          controller: name,
-                          enabled: isEdit.value,
-                          decoration: InputDecoration(
-                            contentPadding: const EdgeInsets.all(12),
-                            filled: isEdit.value,
-                            labelText: "Name",
-                            prefixIcon: Icon(
-                              Icons.person,
-                              color: AppColors.darkOnBackgroundColor,
+                        Obx(
+                          () => TextField(
+                            controller: name,
+                            enabled: isEdit.value,
+                            decoration: InputDecoration(
+                              border: UnderlineInputBorder(
+                                borderSide: BorderSide.none,
+                                borderRadius: BorderRadius.circular(
+                                  10,
+                                ),
+                              ),
+                              contentPadding: const EdgeInsets.all(12),
+                              filled: isEdit.value,
+                              labelText: "Name",
+                              prefixIcon: Icon(
+                                Icons.person,
+                                color: AppColors.darkOnBackgroundColor,
+                              ),
                             ),
                           ),
                         ),
                         const SizedBox(
                           height: 10,
                         ),
-                        TextField(
-                          controller: about,
-                          enabled: isEdit.value,
-                          decoration: InputDecoration(
-                            contentPadding: const EdgeInsets.all(12),
-                            filled: isEdit.value,
-                            labelText: "About",
-                            prefixIcon: Icon(
-                              Icons.info,
-                              color: AppColors.darkOnBackgroundColor,
+                        Obx(
+                          () => TextField(
+                            controller: about,
+                            enabled: isEdit.value,
+                            decoration: InputDecoration(
+                              border: UnderlineInputBorder(
+                                borderSide: BorderSide.none,
+                                borderRadius: BorderRadius.circular(
+                                  10,
+                                ),
+                              ),
+                              contentPadding: const EdgeInsets.all(12),
+                              filled: isEdit.value,
+                              labelText: "About",
+                              prefixIcon: Icon(
+                                Icons.info,
+                                color: AppColors.darkOnBackgroundColor,
+                              ),
                             ),
                           ),
                         ),
                         const SizedBox(
                           height: 10,
                         ),
-                        TextField(
-                          controller: phoneNumber,
-                          enabled: isEdit.value,
-                          decoration: InputDecoration(
-                            contentPadding: const EdgeInsets.all(12),
-                            filled: isEdit.value,
-                            labelText: "Phone Number",
-                            prefixIcon: Icon(
-                              Icons.phone,
-                              color: AppColors.darkOnBackgroundColor,
+                        Obx(
+                          () => TextField(
+                            controller: phoneNumber,
+                            enabled: isEdit.value,
+                            decoration: InputDecoration(
+                              border: UnderlineInputBorder(
+                                borderSide: BorderSide.none,
+                                borderRadius: BorderRadius.circular(
+                                  10,
+                                ),
+                              ),
+                              contentPadding: const EdgeInsets.all(12),
+                              filled: isEdit.value,
+                              labelText: "Number",
+                              prefixIcon: Icon(
+                                Icons.phone,
+                                color: AppColors.darkOnBackgroundColor,
+                              ),
                             ),
                           ),
                         ),
@@ -107,16 +132,43 @@ class ProfileScreen extends StatelessWidget {
                         ),
                         TextField(
                           controller: email,
-                          enabled: isEdit.value,
+                          enabled: false,
                           decoration: InputDecoration(
+                            border: UnderlineInputBorder(
+                              borderSide: BorderSide.none,
+                              borderRadius: BorderRadius.circular(
+                                10,
+                              ),
+                            ),
                             contentPadding: const EdgeInsets.all(12),
-                            filled: isEdit.value,
+                            filled: false,
                             labelText: "Email",
                             prefixIcon: Icon(
                               Icons.person,
                               color: AppColors.darkOnBackgroundColor,
                             ),
                           ),
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        Obx(
+                          () => isEdit.value
+                              ? PrimaryButton(
+                                  title: "Save",
+                                  ontap: () {
+                                    isEdit.value = false;
+                                  },
+                                )
+                              : PrimaryButton(
+                                  title: "Edit",
+                                  ontap: () {
+                                    isEdit.value = true;
+                                  },
+                                ),
+                        ),
+                        const SizedBox(
+                          height: 30,
                         ),
                       ],
                     ),
