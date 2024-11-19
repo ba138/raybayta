@@ -12,13 +12,14 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     RxBool isEdit = false.obs;
     ProfileController profileController = ProfileController();
-    var name =
-        TextEditingController(text: profileController.currentUser.value.name);
-    var email =
-        TextEditingController(text: profileController.currentUser.value.email);
-    var phoneNumber = TextEditingController(
-        text: profileController.currentUser.value.phoneNumber);
-    var about = TextEditingController(text: "I am Basit Ali");
+    TextEditingController name =
+        TextEditingController(text: profileController.currentUser.value.name!);
+    TextEditingController email =
+        TextEditingController(text: profileController.currentUser.value.email!);
+    TextEditingController phoneNumber = TextEditingController(
+        text: profileController.currentUser.value.phoneNumber!);
+    TextEditingController about =
+        TextEditingController(text: profileController.currentUser.value.about!);
 
     return Scaffold(
       appBar: AppBar(
