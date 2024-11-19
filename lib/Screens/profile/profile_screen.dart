@@ -57,15 +57,16 @@ class ProfileScreen extends StatelessWidget {
                               backgroundColor: AppColors.darkBackgroundColor,
                               radius: 50,
                               child: Align(
-                                  alignment: Alignment.bottomRight,
-                                  child: isEdit.value
-                                      ? IconButton(
-                                          onPressed: () {},
-                                          icon: const Icon(
-                                            Icons.image,
-                                          ),
-                                        )
-                                      : null),
+                                alignment: Alignment.bottomRight,
+                                child: isEdit.value
+                                    ? IconButton(
+                                        onPressed: () {},
+                                        icon: const Icon(
+                                          Icons.image,
+                                        ),
+                                      )
+                                    : null,
+                              ),
                             ),
                           ),
                           const SizedBox(
