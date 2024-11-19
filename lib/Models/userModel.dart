@@ -1,14 +1,14 @@
 class UserModel {
-  final String id;
-  final String email;
-  final String name;
+  final String? id;
+  final String? email;
+  final String? name;
   final String? phoneNumber;
   final String? profileImage;
 
   UserModel({
-    required this.id,
-    required this.email,
-    required this.name,
+    this.id,
+    this.email,
+    this.name,
     this.phoneNumber,
     this.profileImage,
   });

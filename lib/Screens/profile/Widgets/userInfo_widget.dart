@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_core/get_core.dart';
+import 'package:get/get_instance/get_instance.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:raybayta/Configs/colors.dart';
+import 'package:raybayta/Controllers/profile_Controller.dart';
 
 class UserinfoWidget extends StatelessWidget {
   const UserinfoWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
+    ProfileController profileController = Get.put(ProfileController());
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -35,7 +39,7 @@ class UserinfoWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "Basit Ali",
+                    profileController.currentUser.value.name! ?? "User",
                     style: GoogleFonts.getFont(
                       "Poppins",
                       textStyle: TextStyle(
@@ -51,7 +55,7 @@ class UserinfoWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "basitalyshah51214@gmail.com",
+                    profileController.currentUser.value.email! ?? "User Email",
                     style: GoogleFonts.getFont(
                       "Poppins",
                       textStyle: TextStyle(
