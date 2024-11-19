@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:raybayta/Configs/colors.dart';
+import 'package:raybayta/Controllers/profile_Controller.dart';
 import 'package:raybayta/Widgets/primary_button.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -10,9 +11,13 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     RxBool isEdit = false.obs;
-    var name = TextEditingController(text: "Basit Ali");
-    var email = TextEditingController(text: "BasitAli@gmail.com");
-    var phoneNumber = TextEditingController(text: "03554500599");
+    ProfileController profileController = ProfileController();
+    var name =
+        TextEditingController(text: profileController.currentUser.value.name);
+    var email =
+        TextEditingController(text: profileController.currentUser.value.email);
+    var phoneNumber = TextEditingController(
+        text: profileController.currentUser.value.phoneNumber);
     var about = TextEditingController(text: "I am Basit Ali");
 
     return Scaffold(
