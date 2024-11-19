@@ -2,20 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:raybayta/Configs/colors.dart';
-import 'package:raybayta/Controllers/auth_controller.dart';
-
-import 'package:raybayta/Screens/profile/Widgets/userInfo_widget.dart';
-import 'package:raybayta/Widgets/primary_button.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    AuthController auth = Get.put(AuthController());
+    RxBool isEdit = false.obs;
+    var name = TextEditingController(text: "Basit Ali");
+    var email = TextEditingController(text: "BasitAli@gmail.com");
+    var phoneNumber = TextEditingController(text: "03554500599");
+    var about = TextEditingController(text: "I am Basit Ali");
 
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text(
           "Profile",
           style: GoogleFonts.getFont(
@@ -27,32 +28,105 @@ class ProfileScreen extends StatelessWidget {
             ),
           ),
         ),
-        actions: [
-          IconButton(
-              onPressed: () {
-                Get.toNamed("/updateProfileView");
-              },
-              icon: const Icon(Icons.edit))
-        ],
+        // actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.edit))],
       ),
-      body: SafeArea(
-          child: Padding(
-        padding: const EdgeInsets.all(12.0),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            const UserinfoWidget(),
-            const Spacer(),
-            PrimaryButton(
-                title: "Logout",
-                ontap: () {
-                  auth.logout();
-                }),
-            const SizedBox(
-              height: 40,
-            ),
+            Container(
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: AppColors.darkContainerColor,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        CircleAvatar(
+                          backgroundColor: AppColors.darkBackgroundColor,
+                          radius: 50,
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        TextField(
+                          controller: name,
+                          enabled: isEdit.value,
+                          decoration: InputDecoration(
+                            contentPadding: const EdgeInsets.all(12),
+                            filled: isEdit.value,
+                            labelText: "Name",
+                            prefixIcon: Icon(
+                              Icons.person,
+                              color: AppColors.darkOnBackgroundColor,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        TextField(
+                          controller: about,
+                          enabled: isEdit.value,
+                          decoration: InputDecoration(
+                            contentPadding: const EdgeInsets.all(12),
+                            filled: isEdit.value,
+                            labelText: "About",
+                            prefixIcon: Icon(
+                              Icons.info,
+                              color: AppColors.darkOnBackgroundColor,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        TextField(
+                          controller: phoneNumber,
+                          enabled: isEdit.value,
+                          decoration: InputDecoration(
+                            contentPadding: const EdgeInsets.all(12),
+                            filled: isEdit.value,
+                            labelText: "Phone Number",
+                            prefixIcon: Icon(
+                              Icons.phone,
+                              color: AppColors.darkOnBackgroundColor,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        TextField(
+                          controller: email,
+                          enabled: isEdit.value,
+                          decoration: InputDecoration(
+                            contentPadding: const EdgeInsets.all(12),
+                            filled: isEdit.value,
+                            labelText: "Email",
+                            prefixIcon: Icon(
+                              Icons.person,
+                              color: AppColors.darkOnBackgroundColor,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            )
           ],
         ),
-      )),
+      ),
     );
   }
 }

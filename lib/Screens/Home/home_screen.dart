@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:raybayta/Configs/colors.dart';
 import 'package:raybayta/Screens/Home/Widgets/chat_list.dart';
 import 'package:raybayta/Screens/Home/Widgets/home_tabbar.dart';
-import 'package:raybayta/Screens/profile/profile_screen.dart';
+import 'package:raybayta/Screens/userProfile/user_profile_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
