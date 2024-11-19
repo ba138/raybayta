@@ -52,9 +52,21 @@ class ProfileScreen extends StatelessWidget {
                           const SizedBox(
                             height: 20,
                           ),
-                          CircleAvatar(
-                            backgroundColor: AppColors.darkBackgroundColor,
-                            radius: 50,
+                          Obx(
+                            () => CircleAvatar(
+                              backgroundColor: AppColors.darkBackgroundColor,
+                              radius: 50,
+                              child: Align(
+                                  alignment: Alignment.bottomRight,
+                                  child: isEdit.value
+                                      ? IconButton(
+                                          onPressed: () {},
+                                          icon: const Icon(
+                                            Icons.image,
+                                          ),
+                                        )
+                                      : null),
+                            ),
                           ),
                           const SizedBox(
                             height: 20,
