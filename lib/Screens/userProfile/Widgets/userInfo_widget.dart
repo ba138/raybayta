@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_core/get_core.dart';
+import 'package:get/get_instance/get_instance.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:raybayta/Configs/colors.dart';
+import 'package:raybayta/Controllers/profile_Controller.dart';
 
 class UserinfoWidget extends StatelessWidget {
   const UserinfoWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
+    ProfileController profileController = Get.put(ProfileController());
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -34,33 +39,37 @@ class UserinfoWidget extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    "Basit Ali",
-                    style: GoogleFonts.getFont(
-                      "Poppins",
-                      textStyle: TextStyle(
-                        fontSize: 14,
-                        color: AppColors.darkOnBackgroundColor,
-                        fontWeight: FontWeight.w400,
+                  Obx(
+                    () => Text(
+                      profileController.currentUser.value.name ?? "User",
+                      style: GoogleFonts.getFont(
+                        "Poppins",
+                        textStyle: TextStyle(
+                          fontSize: 14,
+                          color: AppColors.darkOnBackgroundColor,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    "basitalyshah51214@gmail.com",
-                    style: GoogleFonts.getFont(
-                      "Poppins",
-                      textStyle: TextStyle(
-                        fontSize: 14,
-                        color: AppColors.darkOnContainerColor,
-                        fontWeight: FontWeight.w400,
+                  Obx(
+                    () => Text(
+                      profileController.currentUser.value.email ?? "User Email",
+                      style: GoogleFonts.getFont(
+                        "Poppins",
+                        textStyle: TextStyle(
+                          fontSize: 14,
+                          color: AppColors.darkOnContainerColor,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
               const SizedBox(

@@ -3,8 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:raybayta/Configs/colors.dart';
 import 'package:raybayta/Widgets/primary_button.dart';
 
-class UpdateProfileScreen extends StatelessWidget {
-  const UpdateProfileScreen({super.key});
+class UserUpdateProfileScreen extends StatelessWidget {
+  const UserUpdateProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
