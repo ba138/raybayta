@@ -33,35 +33,107 @@ class ProfileScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            Container(
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: AppColors.darkContainerColor,
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        CircleAvatar(
-                          backgroundColor: AppColors.darkBackgroundColor,
-                          radius: 50,
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        Obx(
-                          () => TextField(
-                            controller: name,
-                            enabled: isEdit.value,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: AppColors.darkContainerColor,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          CircleAvatar(
+                            backgroundColor: AppColors.darkBackgroundColor,
+                            radius: 50,
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          Obx(
+                            () => TextField(
+                              controller: name,
+                              enabled: isEdit.value,
+                              decoration: InputDecoration(
+                                border: UnderlineInputBorder(
+                                  borderSide: BorderSide.none,
+                                  borderRadius: BorderRadius.circular(
+                                    10,
+                                  ),
+                                ),
+                                contentPadding: const EdgeInsets.all(12),
+                                filled: isEdit.value,
+                                labelText: "Name",
+                                prefixIcon: Icon(
+                                  Icons.person,
+                                  color: AppColors.darkOnBackgroundColor,
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Obx(
+                            () => TextField(
+                              controller: about,
+                              enabled: isEdit.value,
+                              decoration: InputDecoration(
+                                border: UnderlineInputBorder(
+                                  borderSide: BorderSide.none,
+                                  borderRadius: BorderRadius.circular(
+                                    10,
+                                  ),
+                                ),
+                                contentPadding: const EdgeInsets.all(12),
+                                filled: isEdit.value,
+                                labelText: "About",
+                                prefixIcon: Icon(
+                                  Icons.info,
+                                  color: AppColors.darkOnBackgroundColor,
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Obx(
+                            () => TextField(
+                              controller: phoneNumber,
+                              enabled: isEdit.value,
+                              decoration: InputDecoration(
+                                border: UnderlineInputBorder(
+                                  borderSide: BorderSide.none,
+                                  borderRadius: BorderRadius.circular(
+                                    10,
+                                  ),
+                                ),
+                                contentPadding: const EdgeInsets.all(12),
+                                filled: isEdit.value,
+                                labelText: "Number",
+                                prefixIcon: Icon(
+                                  Icons.phone,
+                                  color: AppColors.darkOnBackgroundColor,
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          TextField(
+                            controller: email,
+                            enabled: false,
                             decoration: InputDecoration(
                               border: UnderlineInputBorder(
                                 borderSide: BorderSide.none,
@@ -70,113 +142,43 @@ class ProfileScreen extends StatelessWidget {
                                 ),
                               ),
                               contentPadding: const EdgeInsets.all(12),
-                              filled: isEdit.value,
-                              labelText: "Name",
+                              filled: false,
+                              labelText: "Email",
                               prefixIcon: Icon(
                                 Icons.person,
                                 color: AppColors.darkOnBackgroundColor,
                               ),
                             ),
                           ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Obx(
-                          () => TextField(
-                            controller: about,
-                            enabled: isEdit.value,
-                            decoration: InputDecoration(
-                              border: UnderlineInputBorder(
-                                borderSide: BorderSide.none,
-                                borderRadius: BorderRadius.circular(
-                                  10,
-                                ),
-                              ),
-                              contentPadding: const EdgeInsets.all(12),
-                              filled: isEdit.value,
-                              labelText: "About",
-                              prefixIcon: Icon(
-                                Icons.info,
-                                color: AppColors.darkOnBackgroundColor,
-                              ),
-                            ),
+                          const SizedBox(
+                            height: 30,
                           ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Obx(
-                          () => TextField(
-                            controller: phoneNumber,
-                            enabled: isEdit.value,
-                            decoration: InputDecoration(
-                              border: UnderlineInputBorder(
-                                borderSide: BorderSide.none,
-                                borderRadius: BorderRadius.circular(
-                                  10,
-                                ),
-                              ),
-                              contentPadding: const EdgeInsets.all(12),
-                              filled: isEdit.value,
-                              labelText: "Number",
-                              prefixIcon: Icon(
-                                Icons.phone,
-                                color: AppColors.darkOnBackgroundColor,
-                              ),
-                            ),
+                          Obx(
+                            () => isEdit.value
+                                ? PrimaryButton(
+                                    title: "Save",
+                                    ontap: () {
+                                      isEdit.value = false;
+                                    },
+                                  )
+                                : PrimaryButton(
+                                    title: "Edit",
+                                    ontap: () {
+                                      isEdit.value = true;
+                                    },
+                                  ),
                           ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        TextField(
-                          controller: email,
-                          enabled: false,
-                          decoration: InputDecoration(
-                            border: UnderlineInputBorder(
-                              borderSide: BorderSide.none,
-                              borderRadius: BorderRadius.circular(
-                                10,
-                              ),
-                            ),
-                            contentPadding: const EdgeInsets.all(12),
-                            filled: false,
-                            labelText: "Email",
-                            prefixIcon: Icon(
-                              Icons.person,
-                              color: AppColors.darkOnBackgroundColor,
-                            ),
+                          const SizedBox(
+                            height: 30,
                           ),
-                        ),
-                        const SizedBox(
-                          height: 30,
-                        ),
-                        Obx(
-                          () => isEdit.value
-                              ? PrimaryButton(
-                                  title: "Save",
-                                  ontap: () {
-                                    isEdit.value = false;
-                                  },
-                                )
-                              : PrimaryButton(
-                                  title: "Edit",
-                                  ontap: () {
-                                    isEdit.value = true;
-                                  },
-                                ),
-                        ),
-                        const SizedBox(
-                          height: 30,
-                        ),
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            )
-          ],
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
