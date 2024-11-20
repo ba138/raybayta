@@ -2,25 +2,31 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:raybayta/Configs/colors.dart';
+import 'package:raybayta/Controllers/auth_controller.dart';
 import 'package:raybayta/Controllers/profile_Controller.dart';
 import 'package:raybayta/Widgets/primary_button.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
   @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  @override
   Widget build(BuildContext context) {
     RxBool isEdit = false.obs;
-    ProfileController profileController = ProfileController();
+    ProfileController profileController = Get.put(ProfileController());
     TextEditingController name =
-        TextEditingController(text: profileController.currentUser.value.name!);
+        TextEditingController(text: profileController.currentUser.value.name);
     TextEditingController email =
-        TextEditingController(text: profileController.currentUser.value.email!);
+        TextEditingController(text: profileController.currentUser.value.email);
     TextEditingController phoneNumber = TextEditingController(
-        text: profileController.currentUser.value.phoneNumber!);
+        text: profileController.currentUser.value.phoneNumber);
     TextEditingController about =
-        TextEditingController(text: profileController.currentUser.value.about!);
-
+        TextEditingController(text: profileController.currentUser.value.about);
+    debugPrint("this is the name:${profileController.currentUser.value.name}");
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -187,6 +193,12 @@ class ProfileScreen extends StatelessWidget {
                                     },
                                   ),
                           ),
+//                           PrimaryButton(
+//                                     title: "Logout",
+//                                     ontap: () {
+// auth
+//                                     },
+//                                   ),
                           const SizedBox(
                             height: 30,
                           ),
