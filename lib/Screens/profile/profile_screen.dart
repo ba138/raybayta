@@ -11,22 +11,13 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     RxBool isEdit = false.obs;
-    ProfileController profileController = Get.put(
-      ProfileController(),
-    );
-    TextEditingController name = TextEditingController(
-      text: profileController.currentUser.value.name,
-    );
-    TextEditingController email = TextEditingController(
-      text: profileController.currentUser.value.email,
-    );
-    TextEditingController phoneNumber = TextEditingController(
-      text: profileController.currentUser.value.phoneNumber,
-    );
-    TextEditingController about = TextEditingController(
-      text: profileController.currentUser.value.about,
-    );
-    debugPrint("this is the name:${profileController.currentUser.value.name}");
+    ProfileController profileController = Get.put(ProfileController());
+
+    TextEditingController name = TextEditingController();
+    TextEditingController email = TextEditingController();
+    TextEditingController phoneNumber = TextEditingController();
+    TextEditingController about = TextEditingController();
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -41,59 +32,61 @@ class ProfileScreen extends StatelessWidget {
             ),
           ),
         ),
-        // actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.edit))],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Container(
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  color: AppColors.darkContainerColor,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          Obx(
-                            () => CircleAvatar(
-                              backgroundColor: AppColors.darkBackgroundColor,
-                              radius: 50,
-                              child: Align(
-                                alignment: Alignment.bottomRight,
-                                child: isEdit.value
-                                    ? IconButton(
-                                        onPressed: () {},
-                                        icon: const Icon(
-                                          Icons.image,
-                                        ),
-                                      )
-                                    : null,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          Obx(
-                            () => TextField(
+      body: Obx(() {
+        // Ensure data is loaded before displaying UI
+        if (profileController.currentUser.value.name == null) {
+          return const Center(child: CircularProgressIndicator());
+        }
+
+        // Update controllers when data is available
+        name.text = profileController.currentUser.value.name ?? '';
+        email.text = profileController.currentUser.value.email ?? '';
+        phoneNumber.text =
+            profileController.currentUser.value.phoneNumber ?? '';
+        about.text = profileController.currentUser.value.about ?? '';
+
+        return Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: AppColors.darkContainerColor,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            const SizedBox(height: 20),
+                            Obx(() => CircleAvatar(
+                                  backgroundColor:
+                                      AppColors.darkBackgroundColor,
+                                  radius: 50,
+                                  child: Align(
+                                    alignment: Alignment.bottomRight,
+                                    child: isEdit.value
+                                        ? IconButton(
+                                            onPressed: () {},
+                                            icon: const Icon(Icons.image),
+                                          )
+                                        : null,
+                                  ),
+                                )),
+                            const SizedBox(height: 20),
+                            TextField(
                               controller: name,
                               enabled: isEdit.value,
                               decoration: InputDecoration(
                                 border: UnderlineInputBorder(
                                   borderSide: BorderSide.none,
-                                  borderRadius: BorderRadius.circular(
-                                    10,
-                                  ),
+                                  borderRadius: BorderRadius.circular(10),
                                 ),
                                 contentPadding: const EdgeInsets.all(12),
                                 filled: isEdit.value,
@@ -104,20 +97,14 @@ class ProfileScreen extends StatelessWidget {
                                 ),
                               ),
                             ),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Obx(
-                            () => TextField(
+                            const SizedBox(height: 10),
+                            TextField(
                               controller: about,
                               enabled: isEdit.value,
                               decoration: InputDecoration(
                                 border: UnderlineInputBorder(
                                   borderSide: BorderSide.none,
-                                  borderRadius: BorderRadius.circular(
-                                    10,
-                                  ),
+                                  borderRadius: BorderRadius.circular(10),
                                 ),
                                 contentPadding: const EdgeInsets.all(12),
                                 filled: isEdit.value,
@@ -128,20 +115,14 @@ class ProfileScreen extends StatelessWidget {
                                 ),
                               ),
                             ),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Obx(
-                            () => TextField(
+                            const SizedBox(height: 10),
+                            TextField(
                               controller: phoneNumber,
                               enabled: isEdit.value,
                               decoration: InputDecoration(
                                 border: UnderlineInputBorder(
                                   borderSide: BorderSide.none,
-                                  borderRadius: BorderRadius.circular(
-                                    10,
-                                  ),
+                                  borderRadius: BorderRadius.circular(10),
                                 ),
                                 contentPadding: const EdgeInsets.all(12),
                                 filled: isEdit.value,
@@ -152,34 +133,26 @@ class ProfileScreen extends StatelessWidget {
                                 ),
                               ),
                             ),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          TextField(
-                            controller: email,
-                            enabled: false,
-                            decoration: InputDecoration(
-                              border: UnderlineInputBorder(
-                                borderSide: BorderSide.none,
-                                borderRadius: BorderRadius.circular(
-                                  10,
+                            const SizedBox(height: 10),
+                            TextField(
+                              controller: email,
+                              enabled: false,
+                              decoration: InputDecoration(
+                                border: UnderlineInputBorder(
+                                  borderSide: BorderSide.none,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                contentPadding: const EdgeInsets.all(12),
+                                filled: false,
+                                labelText: "Email",
+                                prefixIcon: Icon(
+                                  Icons.email,
+                                  color: AppColors.darkOnBackgroundColor,
                                 ),
                               ),
-                              contentPadding: const EdgeInsets.all(12),
-                              filled: false,
-                              labelText: "Email",
-                              prefixIcon: Icon(
-                                Icons.person,
-                                color: AppColors.darkOnBackgroundColor,
-                              ),
                             ),
-                          ),
-                          const SizedBox(
-                            height: 30,
-                          ),
-                          Obx(
-                            () => isEdit.value
+                            const SizedBox(height: 30),
+                            Obx(() => isEdit.value
                                 ? PrimaryButton(
                                     title: "Save",
                                     ontap: () {
@@ -191,27 +164,19 @@ class ProfileScreen extends StatelessWidget {
                                     ontap: () {
                                       isEdit.value = true;
                                     },
-                                  ),
-                          ),
-//                           PrimaryButton(
-//                                     title: "Logout",
-//                                     ontap: () {
-// auth
-//                                     },
-//                                   ),
-                          const SizedBox(
-                            height: 30,
-                          ),
-                        ],
-                      ),
-                    )
-                  ],
+                                  )),
+                            const SizedBox(height: 30),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
                 ),
-              )
-            ],
+              ],
+            ),
           ),
-        ),
-      ),
+        );
+      }),
     );
   }
 }
