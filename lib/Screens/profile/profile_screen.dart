@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:raybayta/Configs/colors.dart';
+import 'package:raybayta/Controllers/image_picker_controller.dart';
 import 'package:raybayta/Controllers/profile_Controller.dart';
 import 'package:raybayta/Widgets/primary_button.dart';
 
@@ -12,7 +14,10 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     RxBool isEdit = false.obs;
     ProfileController profileController = Get.put(ProfileController());
-
+    ImagePickerController imagePickerController = Get.put(
+      ImagePickerController(),
+    );
+    Future<XFile?> pickedImage = imagePickerController.pickImage();
     TextEditingController name = TextEditingController();
     TextEditingController email = TextEditingController();
     TextEditingController phoneNumber = TextEditingController();
@@ -68,6 +73,7 @@ class ProfileScreen extends StatelessWidget {
                             Obx(() => CircleAvatar(
                                   backgroundColor:
                                       AppColors.darkBackgroundColor,
+                                  // backgroundImage: FileImage(pickedImage),
                                   radius: 50,
                                   child: Align(
                                     alignment: Alignment.bottomRight,
