@@ -39,12 +39,10 @@ class ProfileScreen extends StatelessWidget {
         ),
       ),
       body: Obx(() {
-        // Ensure data is loaded before displaying UI
         if (profileController.currentUser.value.name == null) {
           return const Center(child: CircularProgressIndicator());
         }
 
-        // Update controllers when data is available
         name.text = profileController.currentUser.value.name ?? '';
         email.text = profileController.currentUser.value.email ?? '';
         phoneNumber.text =
