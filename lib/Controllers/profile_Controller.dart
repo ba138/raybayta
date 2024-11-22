@@ -16,11 +16,15 @@ class ProfileController extends GetxController {
 
   Future<void> getUserDetails() async {
     try {
-      db.collection("Users").doc(auth.currentUser!.uid).get().then((value) => {
-            currentUser.value = UserModel.fromJson(
-              value.data()!,
-            ),
-          });
+      await db
+          .collection("Users")
+          .doc(auth.currentUser!.uid)
+          .get()
+          .then((value) => {
+                currentUser.value = UserModel.fromJson(
+                  value.data()!,
+                ),
+              });
     } catch (e) {
       debugPrint("this is error in fetching data from firestore:$e");
     }
