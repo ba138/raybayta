@@ -17,7 +17,6 @@ class ProfileScreen extends StatelessWidget {
     ImagePickerController imagePickerController = Get.put(
       ImagePickerController(),
     );
-    Future<XFile?> pickedImage = imagePickerController.pickImage();
     TextEditingController name = TextEditingController();
     TextEditingController email = TextEditingController();
     TextEditingController phoneNumber = TextEditingController();
