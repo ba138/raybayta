@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -21,7 +23,7 @@ class ProfileScreen extends StatelessWidget {
     TextEditingController email = TextEditingController();
     TextEditingController phoneNumber = TextEditingController();
     TextEditingController about = TextEditingController();
-
+    RxString imagePath = "".obs;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -67,21 +69,35 @@ class ProfileScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             const SizedBox(height: 20),
-                            Obx(() => CircleAvatar(
-                                  backgroundColor:
-                                      AppColors.darkBackgroundColor,
-                                  // backgroundImage: FileImage(pickedImage),
-                                  radius: 50,
-                                  child: Align(
-                                    alignment: Alignment.bottomRight,
-                                    child: isEdit.value
-                                        ? IconButton(
-                                            onPressed: () {},
-                                            icon: const Icon(Icons.image),
-                                          )
-                                        : null,
-                                  ),
-                                )),
+                            Obx(() => isEdit.value
+                                ? Container(
+                                    height: 250,
+                                    width: 250,
+                                    decoration: BoxDecoration(
+                                      color: AppColors.darkBackgroundColor,
+                                      shape: BoxShape.circle,
+                                    ),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(
+                                        100,
+                                      ),
+                                      child: imagePath.value == ""
+                                          ? const Icon(Icons.add)
+                                          : Image.file(File(imagePath.value)),
+                                    ),
+                                  )
+                                : CircleAvatar(
+                                    backgroundColor:
+                                        AppColors.darkBackgroundColor,
+                                    // backgroundImage: FileImage(pickedImage),
+                                    radius: 50,
+                                    child: Align(
+                                        alignment: Alignment.bottomRight,
+                                        child: IconButton(
+                                          onPressed: () {},
+                                          icon: const Icon(Icons.image),
+                                        )),
+                                  )),
                             const SizedBox(height: 20),
                             TextField(
                               controller: name,
